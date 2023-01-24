@@ -7,6 +7,8 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Animal;
 use App\Entity\Espece;
 use App\Entity\Continent;
+use App\Entity\Personne;
+use App\Entity\Dispose;
 
 class AnimalFixtures extends Fixture
 {
@@ -51,6 +53,31 @@ class AnimalFixtures extends Fixture
         $a3 = new Animal();
 	 	$a3->setNom('cheval')->setDescription("lorem ipsum 3…")->setImg("cheval.png")->setCouleur("marron")->setPoid(450)->setEspece($e3)->addContinent($continent1)->addContinent($continent2)->addContinent($continent3)     ;
 	 	$manager->persist($a3);
+
+         $p1 = new Personne();
+         $p1->setNom("Kevin");
+         $manager->persist($p1);
+
+         $p2 = new Personne();
+         $p2->setNom("Yanis");
+         $manager->persist($p2);
+        
+         $p3 = new Personne();
+         $p3->setNom("jeremy");
+         $manager->persist($p3);
+
+         $d1 = new Dispose();
+         $d1->setPersonne($p1)->setAnimal($a1)->setNombre(10);
+         $manager->persist($d1);
+
+         $d2 = new Dispose();
+         $d2->setPersonne($p2)->setAnimal($a2)->setNombre(3);
+         $manager->persist($d2);
+
+         $d2 = new Dispose();
+         $d2->setPersonne($p3)->setAnimal($a3)->setNombre(5);
+         $manager->persist($d2);
+
 
         $manager->flush();
     }

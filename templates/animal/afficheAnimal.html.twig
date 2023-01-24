@@ -14,6 +14,9 @@
  <li>Poid : {{animal.poid}}</li>
  <li>couleur : {{animal.couleur}}</li>
  <img src="{{animal.img}}" alt="photo">
+ {% for dispose in animal.disposes %}
+ <li>{{dispose.personne.nom}} en possede</li>
+{% endfor %}
  
 
 
